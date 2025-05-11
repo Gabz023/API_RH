@@ -9,6 +9,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+
 //Funcionários
 
 Route::post('/funcionarios', function (Request $request){
@@ -27,6 +28,18 @@ Route::post('/funcionarios', function (Request $request){
 
 Route::get('/funcionarios', function (){
     $funcionarios = Funcionarios::all();
+
+    return response()->json($funcionarios);
+});
+
+Route::get('/funcionarios/departamentos', function(){
+    $funcionarios = Funcionarios::with('departamentos')->get();
+
+    return response()->json($funcionarios);
+});
+
+Route::get('/funcionarios/{id}/departamentos', function($id){
+    $funcionarios = Funcionarios::with('departamentos')->find($id);
 
     return response()->json($funcionarios);
 });
@@ -76,6 +89,7 @@ Route::delete('/funcionarios/{id}', function($id){
     return response()->json($funcionarios);
 });
 
+
 //Departamentos
 
 Route::post('/departamentos', function (Request $request){
@@ -90,6 +104,18 @@ Route::post('/departamentos', function (Request $request){
 
 Route::get('/departamentos', function(){
     $departamentos = Departamentos::all();
+
+    return response()->json($departamentos);
+});
+
+Route::get('/departamentos/funcionarios', function(){
+    $departamentos = Departamentos::with('funcionarios')->get();
+
+    return response()->json($departamentos);
+});
+
+Route::get('/departamentos/{id}/funcionarios', function($id){
+    $departamentos = Departamentos::with('funcionarios')->find($id);
 
     return response()->json($departamentos);
 });
