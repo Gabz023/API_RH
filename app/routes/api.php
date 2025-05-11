@@ -121,13 +121,13 @@ Route::get('/departamentos/{id}/funcionarios', function($id){
 });
 
 Route::get('/departamentos/{id}', function($id){
-    $departamentos = Funcionarios::find($id);
+    $departamentos = Departamentos::find($id);
 
     return response()->json($departamentos);
 });
 
 Route::patch('/departamentos/{id}', function(Request $request, $id){
-    $departamentos = Departametos::find($id);
+    $departamentos = Departamentos::find($id);
 
     if($request->input('name') !== null)
     {
