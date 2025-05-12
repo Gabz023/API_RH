@@ -20,6 +20,7 @@ Route::post('/funcionarios', function (Request $request){
     $funcionarios->cpf = $request->input("cpf");
     $funcionarios->number = $request->input("number");
     $funcionarios->address = $request->input("address");
+    $funcionarios->departamentos_id = $request->input("departamentos_id");
 
 
     $funcionarios->save();
@@ -76,6 +77,11 @@ Route::patch('/funcionarios/{id}', function(Request $request, $id){
     if($request->input('address') !== null)
     {
         $funcionarios->address = $request->input("address");
+    }
+
+    if($request->input('departamentos_id') !== null)
+    {
+        $funcionarios->departamentos_id = $request->input("departamentos_id");
     }
 
     $funcionarios->save();
