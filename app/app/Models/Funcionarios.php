@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Funcionarios extends Model
 {
-    protected $table = 'funcionarios';
-    protected $fillable = ['name', 'age', 'cpf', 'number', 'address', 'departamentos_id'];
+    protected $fillable = ["name", "email", "age", "cpf", "departamento_id"];
 
     public function departamentos()
     {
-        return $this->belongsTo(Departamentos::class, 'departamnetos_id', 'id');
+        return $this->belongsTo(Departamentos::class);
     }
 }
