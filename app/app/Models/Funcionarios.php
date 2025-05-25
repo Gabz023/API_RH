@@ -10,6 +10,6 @@ class Funcionarios extends Model
 
     public function departamentos()
     {
-        return $this->belongsTo(Departamentos::class);
+        return $this->belongsTo(Departamentos::class, "departamento_id");
     }
 }

@@ -10,6 +10,6 @@ class Departamentos extends Model
 
     public function funcionarios()
     {
-        return $this->hasMany(Funcionarios::class);
+        return $this->hasMany(Funcionarios::class, "departamento_id");
     }
 }
